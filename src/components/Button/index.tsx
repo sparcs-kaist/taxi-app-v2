@@ -4,21 +4,23 @@ import useHoverProps from "hooks/theme/useHoverProps";
 
 import theme from "tools/theme";
 
+import {Pressable, View} from "react-native";
+import {css} from "@emotion/native";
+
 type ButtonType = "purple" | "purple_inset" | "gray" | "white";
 
 type ButtonProps = {
   type?: ButtonType;
   disabled?: boolean;
-  className?: string;
   children?: ReactNode;
-} & HTMLProps<HTMLDivElement>;
+  onPressed?: () => void; //CHANGES: onClick -> onPressed
+};//TODO: find the alternative for the HTML Properties supports for div element
 
 const Button = ({
   type,
   disabled = false,
-  className,
   children,
-  onClick,
+  onPressed,
   ...divProps
 }: ButtonProps) => {
   const [hoverProps, isHover, isClicked] = useHoverProps();
@@ -63,23 +65,22 @@ const Button = ({
     }
   };
 
-  const style = {
+  const style = css`{
     transitionDuration: theme.duration,
     textAlign: "center" as const,
     ...theme.cursor(disabled),
     ...getColor(),
-  };
+  }`;
 
   return (
-    <div
-      css={style}
-      className={className}
-      onClick={disabled ? undefined : onClick}
+    <Pressable
+      style={style}
+      onPress={disabled ? undefined : onPressed}
       {...hoverProps}
       {...divProps}
     >
       {children}
-    </div>
+    </Pressable>
   );
 };
 
