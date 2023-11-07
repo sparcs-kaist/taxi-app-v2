@@ -1,16 +1,39 @@
 module.exports = {
-  root: true,
-  extends: '@react-native-community',
-  parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint'],
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      rules: {
-        '@typescript-eslint/no-shadow': ['error'],
-        'no-shadow': 'off',
-        'no-undef': 'off',
-      },
-    },
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "cypress/globals": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:cypress/recommended",
+    "eslint:recommended",
+    "@react-native-community",
+    "prettier"
   ],
-};
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "cypress"],
+  "rules": {
+    "no-unused-vars": 1,
+    "react/react-in-jsx-scope": "off",
+    "react/no-unknown-property": ["error", { "ignore": ["css"] }]
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "public/firebase-messaging-sw.js"],
+      "rules": {
+        "no-undef": "off",
+        "no-unused-vars": "off"
+      }
+    }
+  ]
+}
+
