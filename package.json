@@ -14,6 +14,7 @@
     "react": "18.1.0",
     "react-i18next": "^13.3.1",
     "react-native": "0.70.10",
+    "react-native-channel-plugin": "^0.8.0",
     "recoil": "^0.7.7"
   },
   "devDependencies": {

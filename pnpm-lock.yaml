@@ -17,6 +17,9 @@ dependencies:
   react-native:
     specifier: 0.70.10
     version: 0.70.10(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.1.0)
+  react-native-channel-plugin:
+    specifier: ^0.8.0
+    version: 0.8.0(react-native-firebase@5.6.0)(react-native@0.70.10)
   recoil:
     specifier: ^0.7.7
     version: 0.7.7(react-native@0.70.10)(react@18.1.0)
@@ -6562,6 +6565,11 @@ packages:
       is-wsl: 1.1.0
     dev: false
 
+  /opencollective-postinstall@2.0.3:
+    resolution: {integrity: sha512-8AV/sCtuzUeTo8gQK5qDZzARrulB3egtLzFgteqB2tcT4Mw7B8Kt7JcDHmltjz6FOAHsvTevk70gZEbhM4ZS9Q==}
+    hasBin: true
+    dev: false
+
   /optionator@0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
     engines: {node: '>= 0.8.0'}
@@ -6800,7 +6808,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /psl@1.9.0:
     resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
@@ -6869,6 +6876,16 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
 
+  /react-native-channel-plugin@0.8.0(react-native-firebase@5.6.0)(react-native@0.70.10):
+    resolution: {integrity: sha512-f0kPy7WXNBMtY0pGaz9itAOQtS7fhOgt7XObXW/fTKFmg2OS+eD6KB3l3/WSCP3XXHyIRUfMxlwVnyO3COjN7A==}
+    peerDependencies:
+      react-native: '>=0.60.0'
+      react-native-firebase: '>=5.0.0'
+    dependencies:
+      react-native: 0.70.10(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.1.0)
+      react-native-firebase: 5.6.0(react-native@0.70.10)(react@18.1.0)
+    dev: false
+
   /react-native-codegen@0.70.7(@babel/preset-env@7.23.2):
     resolution: {integrity: sha512-qXE8Jrhc9BmxDAnCmrHFDLJrzgjsE/mH57dtC4IO7K76AwagdXNCMRp5SA8XdHJzvvHWRaghpiFHEMl9TtOBcQ==}
     dependencies:
@@ -6879,6 +6896,20 @@ packages:
     transitivePeerDependencies:
       - '@babel/preset-env'
       - supports-color
+    dev: false
+
+  /react-native-firebase@5.6.0(react-native@0.70.10)(react@18.1.0):
+    resolution: {integrity: sha512-I+o3zNLdIz4pxWTCSZH70M1BcPl+SdqKQfurOT0sWcaMSL2ecDqVy0PCTmN7ORt7/Z879Er6PLgA/psjArQlmw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    requiresBuild: true
+    peerDependencies:
+      react: '>= 16.5.0'
+      react-native: '>= 0.57.0 < 1'
+    dependencies:
+      opencollective-postinstall: 2.0.3
+      prop-types: 15.8.1
+      react: 18.1.0
+      react-native: 0.70.10(@babel/core@7.23.2)(@babel/preset-env@7.23.2)(react@18.1.0)
     dev: false
 
   /react-native-gradle-plugin@0.70.3:
