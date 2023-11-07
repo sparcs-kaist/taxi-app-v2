@@ -5,6 +5,8 @@ import useButterflyState from 'hooks/useButterflyState';
 import AdaptiveCenter from './AdaptiveCenter';
 
 import theme from 'tools/theme';
+import { View } from 'react-native';
+import {css} from "@emotion/native";
 
 export type AdaptiveButterflyProps = {
   left?: ReactNode;
@@ -19,22 +21,21 @@ const AdaptiveButterfly = ({left, right}: AdaptiveButterflyProps) => {
   if (butterflyState === 'fold' || !right)
     return <AdaptiveCenter>{left}</AdaptiveCenter>;
 
-  const styleColumn = {
-    width: `calc(calc(min(100%, ${
-      theme.adaptivediv.butterfly_device_max_width.wide
-    }px) - ${butterflyGap} - ${theme.adaptivediv.margin * 2}px) / 2)`,
-  };
+  const styleColumn = css`{
+    width: "calc(calc(min(100%, ${theme.adaptivediv.butterfly_device_max_width.wide
+    }px) - ${butterflyGap} - ${theme.adaptivediv.margin * 2}px) / 2)",
+  }`;
 
   return (
-    <div
-      css={{
+    <View
+      style={css`{
         display: 'flex',
         gap: butterflyGap,
         justifyContent: 'center',
-      }}>
-      <div css={styleColumn}>{left}</div>
-      <div css={styleColumn}>{right}</div>
-    </div>
+      }`}>
+      <View style={styleColumn}>{left}</View>
+      <View style={styleColumn}>{right}</View>
+    </View>
   );
 };
 
