@@ -16,7 +16,10 @@ import AdaptiveDiv from "components/AdaptiveDiv";
 
 import theme from "tools/theme";
 
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import { css } from "@emotion/native";
+import { Pressable, View } from "react-native";
+
+// import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 export type ModalElemProps = {
   isOpen: boolean;
@@ -52,12 +55,12 @@ const ModalElem = ({
     onChangeIsOpen ? () => onChangeIsOpen(false) : () => {},
     [onChangeIsOpen]
   );
-  const onMouseDown = useCallback(({ target }: MouseEvent) => {
+  const onPressIn = useCallback(({ target }: MouseEvent) => {
     if (!modalRef.current?.contains(target as Node)) {
       clickRef.current = true;
     }
   }, []);
-  const onMouseUp = useCallback(
+  const onPressOut = useCallback(
     ({ target }: MouseEvent) => {
       if (clickRef.current && !modalRef.current?.contains(target as Node)) {
         closeHandler();
@@ -76,7 +79,7 @@ const ModalElem = ({
     setDisplay(shouldMount && isOpen);
   }, [shouldMount, isOpen]);
 
-  const styleBgd = {
+  const styleBgd = css`{
     position: "fixed" as any,
     display: "flex",
     top: "0px",
@@ -86,10 +89,10 @@ const ModalElem = ({
     zIndex: isAlert ? theme.zIndex_alert : theme.zIndex_modal,
     background: isAlert ? theme.black_40 : theme.black_60,
     opacity: display ? 1 : 0,
-    transition: `opacity ${theme.duration} ease-in-out`,
+    transition: 'opacity ${theme.duration} ease-in-out',
     pointerEvents: (isOpen ? "auto" : "none") as any,
-  };
-  const styleBody = {
+  }`;
+  const styleBody = css`{
     position: "relative" as any,
     background: theme.white,
     borderRadius: "15px",
@@ -99,7 +102,7 @@ const ModalElem = ({
     display: "flex",
     flexDirection: "column" as any,
     boxSizing: "border-box" as any,
-  };
+  }`;
   const styleBtn: CSS = useMemo(
     () => ({
       color: theme.gray_text,
@@ -114,17 +117,20 @@ const ModalElem = ({
 
   if (!shouldMount) return null;
   return (
-    <div css={styleBgd} onMouseDown={onMouseDown} onMouseUp={onMouseUp}>
+    <Pressable 
+    style = {styleBgd} 
+    onPressIn={onPressIn} 
+    onPressOut={onPressOut}>
       {backgroundChildren}
       <AdaptiveDiv type="modal" width={width}>
-        <div ref={modalRef} className={className} css={styleBody}>
+        <View ref={modalRef} className={className} css={styleBody}>
           {children}
           {displayCloseBtn && (
             <CloseRoundedIcon style={styleBtn} onClick={closeHandler} />
           )}
-        </div>
+        </View>
       </AdaptiveDiv>
-    </div>
+    </Pressable>
   );
 };
 

@@ -4,7 +4,7 @@ import theme from "tools/theme";
 
 type HeaderProps = {
   children?: ReactNode;
-} & HTMLProps<HTMLDivElement>;
+}; //TODO: find the alternative for the HTML Properties supports for div element
 
 const Header = ({ children, ...divProps }: HeaderProps) => {
   const navRef = useRef<HTMLDivElement>(null);

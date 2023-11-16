@@ -1,23 +1,28 @@
 import theme from "tools/theme";
+import { css } from "@emotion/native";
+import {Pressable, View} from "react-native";
 
 type ButtonAboveFooterProps = {
   text: string;
-  onClick?: () => void;
+  onPress?: () => void;
 };
 
-const ButtonAboveFooter = ({ text, onClick }: ButtonAboveFooterProps) => (
-  <div css={{ ...theme.font12, padding: "6px" }}>
-    <a
-      onClick={onClick}
-      style={{
-        textDecoration: "none",
-        color: theme.gray_text,
-        ...theme.cursor(),
-      }}
+const ButtonAboveFooter = ({ text, onPress }: ButtonAboveFooterProps) => (
+  <View style={css` 
+  ...theme.font12;
+   padding: 6px;
+   `}>
+    <Pressable
+      onPress={onPress}
+      style={css`
+        textDecoration: none;
+        color: ${theme.gray_text};
+        ...theme.cursor();
+      `}
     >
       {text}
-    </a>
-  </div>
+    </Pressable>
+  </View>
 );
 
 export default ButtonAboveFooter;

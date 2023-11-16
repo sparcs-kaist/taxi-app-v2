@@ -1,6 +1,6 @@
 import theme from "tools/theme";
 
-import { Pressable, View } from "react-native";
+import { Pressable, Text, TextStyle, View } from "react-native";
 import { css } from "@emotion/native";
 
 type ButtonShareProps = {
@@ -12,37 +12,39 @@ type ButtonShareProps = {
 
 const ButtonShare = ({ text, icon, background, onPress }: ButtonShareProps) => (
   <Pressable
-    style={css`{
-      width: "45px",
-      cursor: "pointer",
-    }`}
+    style={css`
+      width: 45px;
+      cursor: pointer;
+    `}
     onPress={onPress}
   >
     <View
-      style={css`{
-        width: "45px",
-        height: "45px",
-        borderRadius: "6px",
-        backgroundColor: background,
-        boxShadow: theme.shadow_gray_button_inset,
-        color: theme.gray_text,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }`}
+      style={css`
+        width: 45px;
+        height: 45px;
+        borderradius: 6px;
+        backgroundcolor: ${background};
+        boxshadow: ${theme.shadow_gray_button_inset};
+        color: ${theme.gray_text};
+        display: flex;
+        alignitems: center;
+        justifycontent: center;
+      `}
     >
       {icon}
     </View>
-    <View
-      style={css`{
-        ...theme.font10,
-        color: theme.gray_text,
-        textAlign: "center",
-        paddingTop: "4px",
-      }`}
+    <Text
+      style={[
+        css`
+          color: ${theme.gray_text};
+          textalign: center;
+          paddingtop: 4px;
+        `,
+        theme.font10 as TextStyle
+      ]}
     >
       {text}
-    </View>
+    </Text>
   </Pressable>
 );
 

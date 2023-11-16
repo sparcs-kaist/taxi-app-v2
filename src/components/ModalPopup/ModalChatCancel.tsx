@@ -1,6 +1,10 @@
 import { useCallback } from "react";
 import { useHistory } from "react-router-dom";
 
+import {View, Text} from "react-native";
+
+import {css} from "@emotion/native";
+
 import { useFetchRecoilState } from "hooks/useFetchRecoilState";
 import { useAxios } from "hooks/useTaxiAPI";
 
@@ -38,78 +42,78 @@ const ModalChatCancel = ({ roomId, ...modalProps }: ModalChatCancelProps) => {
     [roomId]
   );
 
-  const styleTextCont = {
+  const styleTextCont = css`{
     textAlign: "center" as any,
-  };
-  const styleTextCont2 = {
+  }`;
+  const styleTextCont2 =css` {
     textAlign: "center" as any,
     lineHieght: "12px",
     paddingTop: "6px",
     fontSize: "10px",
     color: "888888",
-  };
-  const styleTxt1 = {
+  }`;
+  const styleTxt1 =css` {
     fontSize: "16px",
     fontWeight: "bold",
-  };
-  const styleTxt2 = {
+  }`;
+  const styleTxt2 =css` {
     fontSize: "16px",
     fontWeight: 300,
-  };
-  const styleTxt3 = {
+  }`;
+  const styleTxt3 =css` {
     fontSize: "16px",
     fontWeight: "bold",
     color: "#6E3678",
-  };
+  }`;
 
   return (
     <Modal {...modalProps} padding="10px" onEnter={onClickOk}>
-      <div css={{ margin: "26px 0 24px" }}>
-        <div css={styleTextCont}>
-          <span css={styleTxt1}>탑승</span>
-          <span css={styleTxt2}>을 </span>
-          <span css={styleTxt3}>취소</span>
-          <span css={styleTxt2}>하시겠습니까?</span>
-        </div>
-        <div css={styleTextCont2}>
+      <View style={css`{ margin: "26px 0 24px" }`}>
+        <View style={styleTextCont}>
+          <Text style={styleTxt1}>탑승</Text>
+          <Text style={styleTxt2}>을 </Text>
+          <Text style={styleTxt3}>취소</Text>
+          <Text style={styleTxt2}>하시겠습니까?</Text>
+        </View>
+        <View style={styleTextCont2}>
           취소 후 재탑승이 가능합니다.
           <br />
           다만, 혼자 탑승 중인 경우에는 방이 사라집니다.
-        </div>
-      </div>
-      <div
-        css={{
+        </View>
+      </View>
+      <View
+        style={css`{
           position: "relative",
           display: "flex",
           justifyContent: "space-between",
           gap: "10px",
-        }}
+        }`}
       >
         <Button
           type="gray"
-          css={{
+          style={css`{
             width: "calc(50% - 5px)",
             padding: "10px 0 9px",
             borderRadius: "8px",
             ...theme.font14,
-          }}
-          onClick={() => modalProps?.onChangeIsOpen?.(false)}
+          }`}
+          onPressed={() => modalProps?.onChangeIsOpen?.(false)}
         >
           돌아가기
         </Button>
         <Button
           type="purple_inset"
-          css={{
+          style={css`{
             width: "calc(50% - 5px)",
             padding: "10px 0 9px",
             borderRadius: "8px",
             ...theme.font14_bold,
-          }}
-          onClick={onClickOk}
+          }`}
+          onPressed={onClickOk}
         >
           취소하기
         </Button>
-      </div>
+      </View>
     </Modal>
   );
 };

@@ -1,11 +1,18 @@
-import { HTMLProps, ReactNode } from "react";
+import React, { HTMLProps, ReactNode } from "react";
 
 import useHoverProps from "hooks/theme/useHoverProps";
 
 import theme from "tools/theme";
 
-import {Pressable, View} from "react-native";
-import {css} from "@emotion/native";
+import {
+  Pressable,
+  StyleProp,
+  Text,
+  TextProps,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
+import { ReactNativeStyle, css } from "@emotion/native";
 
 type ButtonType = "purple" | "purple_inset" | "gray" | "white";
 
@@ -13,13 +20,17 @@ type ButtonProps = {
   type?: ButtonType;
   disabled?: boolean;
   children?: ReactNode;
+  style?: StyleProp<ViewStyle>;
+  textStyle?: ReactNativeStyle;
   onPressed?: () => void; //CHANGES: onClick -> onPressed
-};//TODO: find the alternative for the HTML Properties supports for div element
+}; //TODO: find the alternative for the HTML Properties supports for div element
 
 const Button = ({
   type,
   disabled = false,
   children,
+  style,
+  textStyle,
   onPressed,
   ...divProps
 }: ButtonProps) => {
@@ -65,21 +76,23 @@ const Button = ({
     }
   };
 
-  const style = css`{
-    transitionDuration: theme.duration,
-    textAlign: "center" as const,
-    ...theme.cursor(disabled),
-    ...getColor(),
-  }`;
+  const styles = css`
+    transitionDuration: ${theme.duration};
+    ...${getColor()};
+  `; //TODO: theme cursor 처리
+
+  const textStyles = css`textAlign: center;
+  ...${getColor()};
+  `;
 
   return (
     <Pressable
-      style={style}
+      style={[style, styles]}
       onPress={disabled ? undefined : onPressed}
       {...hoverProps}
       {...divProps}
     >
-      {children}
+      <Text style={[textStyles, textStyle]}>{children}</Text>
     </Pressable>
   );
 };

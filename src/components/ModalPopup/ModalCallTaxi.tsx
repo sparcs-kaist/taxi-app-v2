@@ -4,7 +4,11 @@ import BodyCallTaxi from "./Body/BodyCallTaxi";
 
 import theme from "tools/theme";
 
-import LocalTaxiRoundedIcon from "@mui/icons-material/LocalTaxiRounded";
+import {View} from "react-native";
+
+import {css} from "@emotion/native";
+
+// import LocalTaxiRoundedIcon from "@mui/icons-material/LocalTaxiRounded";
 
 type ModalCallTaxiProps = Omit<
   Parameters<typeof Modal>[0],
@@ -12,23 +16,24 @@ type ModalCallTaxiProps = Omit<
 > & { roomInfo: Room };
 
 const ModalCallTaxi = ({ roomInfo, ...modalProps }: ModalCallTaxiProps) => {
-  const styleTitle = {
+  const styleTitle =css`{
     ...theme.font18,
     display: "flex",
     alignItems: "center",
     margin: "0 8px 12px",
-  };
-  const styleIcon = {
+  }`;
+  const styleIcon = css`{
     fontSize: "21px",
     margin: "0 4px 0 0",
-  };
+  }`;
 
   return (
     <Modal {...modalProps} padding="16px 12px 12px">
-      <div css={styleTitle}>
-        <LocalTaxiRoundedIcon style={styleIcon} />
+      <View 
+      style = {styleTitle}>
+        {/* <LocalTaxiRoundedIcon style={styleIcon} /> */}
         택시 호출하기
-      </div>
+      </View>
       <BodyCallTaxi roomInfo={roomInfo} />
     </Modal>
   );

@@ -1,5 +1,10 @@
 import { ReactNode, memo } from "react";
-import { Link } from "react-router-dom";
+// TODO: remove Link from react-router-dom
+// import { Link } from "react-router-dom";
+
+import {View} from "react-native";
+
+import { css } from "@emotion/native";
 
 import HeaderWithBackButton from "./HeaderWithBackButton";
 
@@ -11,36 +16,36 @@ type ButtonNavProps = {
 };
 
 const ButtonNav = ({ selected, children }: ButtonNavProps) => (
-  <div css={{ position: "relative" }}>
-    <div
-      css={{
+  <View style={css`{ position: "relative" }`}>
+    <View
+      style={css`{
         ...theme.font16_bold,
         color: selected ? theme.purple : theme.purple_disabled,
-      }}
+      }`}
     >
       {children}
-    </div>
-    <div
-      css={{
+    </View>
+    <View
+      style={css`{
         position: "absolute",
         bottom: "-6px",
         left: 0,
         width: "100%",
         display: "flex",
         justifyContent: "center",
-      }}
+      }`}
     >
-      <div
-        css={{
+      <View
+        style={css`{
           height: "2px",
           width: "16px",
           background: theme.purple,
           opacity: selected ? 1 : 0,
           borderRadius: "1px",
-        }}
+        }`}
       />
-    </div>
-  </div>
+    </View>
+  </View>
 );
 
 type HeaderWithLeftNavProps = {
@@ -50,16 +55,16 @@ type HeaderWithLeftNavProps = {
 
 const HeaderWithLeftNav = ({ value, options = [] }: HeaderWithLeftNavProps) => (
   <HeaderWithBackButton>
-    <div css={{ display: "flex", gap: "16px" }}>
-      <div css={{ flexGrow: 1 }} />
-      {options.map(({ value: _value, label, to }) => (
+    <View style={css`{ display: "flex", gap: "16px" }`}>
+      <View style={css`{ flexGrow: 1 }`} />
+      {/* {options.map(({ value: _value, label, to }) => (
         <Link key={label} to={to} css={{ textDecoration: "none" }} replace>
           <ButtonNav key={label} selected={_value === value}>
             {label}
           </ButtonNav>
         </Link>
-      ))}
-    </div>
+      ))} */}
+    </View>
   </HeaderWithBackButton>
 );
 

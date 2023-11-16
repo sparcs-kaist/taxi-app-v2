@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
+import {Text, View} from "react-native";
+import { css } from "@emotion/native";
+
 import useAccountFromChats from "hooks/chat/useAccountFromChats";
 import { useEvent2023FallQuestComplete } from "hooks/event/useEvent2023FallQuestComplete";
 import { useValueRecoilState } from "hooks/useFetchRecoilState";
@@ -17,9 +20,9 @@ import { useSetRecoilState } from "recoil";
 
 import theme from "tools/theme";
 
-import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import LocalAtmRoundedIcon from "@mui/icons-material/LocalAtmRounded";
+// import CheckRoundedIcon from "@mui/icons-material/CheckRounded";
+// import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+// import LocalAtmRoundedIcon from "@mui/icons-material/LocalAtmRounded";
 import { ReactComponent as KakaoPayLogo } from "static/assets/serviceLogos/KakaoPayLogo.svg";
 import { ReactComponent as TossLogo } from "static/assets/serviceLogos/TossLogo.svg";
 
@@ -81,128 +84,128 @@ const ModalChatPayment = ({
     isRequesting.current = false;
   };
 
-  const styleTitle = {
+  const styleTitle = css`{
     ...theme.font18,
     display: "flex",
     alignItems: "center",
     margin: "0 8px 12px",
-  };
-  const styleIcon = {
+  }`;
+  const styleIcon = css` {
     fontSize: "21px",
     margin: "0 4px 0 0",
-  };
-  const styleText = {
-    ...theme.font12,
+  }`;
+  const styleText =css` {
+    ...theme.font12
     color: theme.gray_text,
     margin: "0 8px 12px",
-  };
-  const styleAccount = {
+  }`;
+  const styleAccount =css` {
     ...theme.font14,
     display: "flex",
     justifyContent: "center",
     gap: "12px",
     margin: "0 8px 12px",
     color: theme.gray_text,
-  };
+  }`;
 
   return (
     <Modal {...modalProps} padding="16px 12px 12px" onEnter={onClickOk}>
-      <div css={styleTitle}>
-        <LocalAtmRoundedIcon style={styleIcon} />
+      <View style={styleTitle}>
+        {/* <LocalAtmRoundedIcon style={styleIcon} /> */}
         송금하기
-      </div>
+      </View>
       {account && (
         <>
-          <div css={styleText}>
+          <View style={styleText}>
             택시비 결제자의 계좌번호를 참고하시어 송금해 주세요. 결제 방법 선택
             시에 해당 앱으로 이동합니다.
-          </div>
-          <div css={styleAccount} className="selectable">
+          </View>
+          <View style={styleAccount}> {/*selectable*/}
             계좌번호
-            <div css={{}}>{account}</div>
-          </div>
-          <div
-            css={{
+            <View style={{}}>{account}</View>
+          </View>
+          <View
+            style={css`{
               display: "flex",
               justifyContent: "center",
               gap: "10px",
               marginBottom: "12px",
-            }}
+            }`}
           >
             <LinkCopy value={account} onCopy={onCopy}>
               <ButtonShare
                 text="계좌 복사"
-                icon={
-                  isCopied ? (
-                    <CheckRoundedIcon
-                      style={{ fontSize: "16px", color: theme.gray_text }}
-                    />
-                  ) : (
-                    <ContentCopyIcon
-                      style={{ fontSize: "16px", color: theme.gray_text }}
-                    />
-                  )
-                }
+                // icon={
+                //   isCopied ? (
+                //     <CheckRoundedIcon
+                //       style={{ fontSize: "16px", color: theme.gray_text }}
+                //     />
+                //   ) : (
+                //     <ContentCopyIcon
+                //       style={{ fontSize: "16px", color: theme.gray_text }}
+                //     />
+                //   )
+                // }
                 background={theme.gray_background}
               />
             </LinkCopy>
             <LinkPayment type="kakaopay" account={account}>
               <ButtonShare
                 text="카카오페이"
-                icon={<KakaoPayLogo css={{ width: "22px" }} />}
+                icon={<KakaoPayLogo style={{ width: "22px" }} />}
                 background="#FFEB00"
               />
             </LinkPayment>
             <LinkPayment type="toss" account={account}>
               <ButtonShare
                 text="토스"
-                icon={<TossLogo css={{ width: "24px" }} />}
+                icon={<TossLogo style={{ width: "24px" }} />}
                 background="#0050FF"
               />
             </LinkPayment>
-          </div>
+          </View>
           <DottedLine />
-          <div css={{ height: "12px" }} />
+          <View style={css`{ height: "12px" }`} />
         </>
       )}
-      <div css={styleText}>
+      <View style={styleText}>
         택시비 결제자에게 송금 후 <b>송금 확인</b> 버튼을 눌러주세요.
-      </div>
-      <div css={styleText}>
+      </View>
+      <View style={styleText}>
         • 완료 후 취소는 <b>불가능</b>합니다.
         <br />
-        <span css={{ color: theme.red_text }}>
+        <Text style={{ color: theme.red_text }}>
           • 결제자에게 금액을 송금한 경우에만 진행해주세요.
-        </span>
-      </div>
-      <div
-        css={{
+        </Text>
+      </View>
+      <View
+        style={css`{
           position: "relative",
           display: "flex",
           justifyContent: "space-between",
           gap: "10px",
-        }}
+        }`}
       >
         <Button
           type="gray"
-          css={{
-            width: "calc(50% - 5px)",
-            padding: "10px 0 9px",
-            borderRadius: "8px",
-            ...theme.font14,
-          }}
+          style={css`
+            width: "calc(50% - 5px)";
+            padding: "10px 0 9px";
+            borderRadius: "8px";
+            ...theme.font14
+          `}
           onClick={() => modalProps.onChangeIsOpen?.(false)}
         >
           돌아가기
         </Button>
         <Button
           type="purple_inset"
-          css={{
+          style={css`
             width: "calc(50% - 5px)",
             padding: "10px 0 9px",
             borderRadius: "8px",
             ...theme.font14_bold,
-          }}
+          `}
           onClick={onClickOk}
           disabled={settlementStatusForMe !== "send-required"}
         >
@@ -212,7 +215,7 @@ const ModalChatPayment = ({
             ? "송금 확인 완료"
             : "송금 확인 불가능"}
         </Button>
-      </div>
+      </View  >
     </Modal>
   );
 };

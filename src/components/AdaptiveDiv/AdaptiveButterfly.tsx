@@ -21,18 +21,18 @@ const AdaptiveButterfly = ({left, right}: AdaptiveButterflyProps) => {
   if (butterflyState === 'fold' || !right)
     return <AdaptiveCenter>{left}</AdaptiveCenter>;
 
-  const styleColumn = css`{
-    width: "calc(calc(min(100%, ${theme.adaptivediv.butterfly_device_max_width.wide
-    }px) - ${butterflyGap} - ${theme.adaptivediv.margin * 2}px) / 2)",
-  }`;
+  const styleColumn = css`
+    width: calc(calc(min(100%, ${theme.adaptivediv.butterfly_device_max_width.wide
+    }px) - ${butterflyGap} - ${theme.adaptivediv.margin * 2}px) / 2);
+  `;
 
   return (
     <View
-      style={css`{
-        display: 'flex',
-        gap: butterflyGap,
-        justifyContent: 'center',
-      }`}>
+      style={css`
+        display: flex;
+        gap: ${butterflyGap};
+        justifyContent: center;
+      `}>
       <View style={styleColumn}>{left}</View>
       <View style={styleColumn}>{right}</View>
     </View>

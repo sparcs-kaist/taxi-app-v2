@@ -16,10 +16,10 @@ const AdaptiveModal = ({
 }: AdaptiveModalProps) => {
   return (
     <Pressable
-      style={css`{
-        width: 'min(${width}, calc(100% - ${theme.adaptivediv.margin * 2}px))',
-        margin: "auto",
-      }`}
+      style={css`
+        width: min(${width}, calc(100% - ${theme.adaptivediv.margin * 2}px));
+        margin: auto;
+      `}
       onPress={(e) => e.stopPropagation()}
       onPressOut={(e) => e.stopPropagation()}
     >

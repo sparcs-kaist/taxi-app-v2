@@ -1,5 +1,9 @@
 import { ReactNode, memo, useCallback, useState } from "react";
-import { Link } from "react-router-dom";
+// TODO: remove Link from react-router-dom
+// import { Link } from "react-router-dom";
+
+import { css } from "@emotion/native";
+import {View} from "react-native";
 
 import { ModalCredit, ModalPrivacyPolicy } from "components/ModalPopup";
 
@@ -26,11 +30,11 @@ const Footer = ({ type = "full", children }: FooterProps) => {
   );
 
   return (
-    <div
-      css={{
-        paddingTop: "45px",
-        textAlign: "center",
-      }}
+    <View
+      style={css`
+        paddingTop: 45px;
+        textAlign: center;
+      `}
     >
       {children}
       {type === "full" && (
@@ -45,12 +49,13 @@ const Footer = ({ type = "full", children }: FooterProps) => {
           </a>
           <ButtonAboveFooter
             text="개인정보 처리방침"
-            onClick={onClickPrivacyPolicy}
+            onPress={onClickPrivacyPolicy}
           />
+          {/* TODO: remove Link from react-router-dom
           <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
             <ButtonAboveFooter text="택시 살펴보기" />
-          </Link>
-          <ButtonAboveFooter text="만든 사람들" onClick={onClickCredit} />
+          </Link> */}
+          <ButtonAboveFooter text="만든 사람들" onPress={onClickCredit} />
         </>
       )}
       {type === "event-2023fall" && (
@@ -62,22 +67,23 @@ const Footer = ({ type = "full", children }: FooterProps) => {
           />
           <ButtonAboveFooter
             text="한가위 송편 이벤트를 만든 사람들"
-            onClick={onClickCredit}
+            onPress={onClickCredit}
           />
-          <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
+          {/* <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
             <ButtonAboveFooter text="택시 살펴보기" />
-          </Link>
+          </Link> */}
           <a className="popup-channeltalk">
             <ButtonAboveFooter text="채널톡 문의하기" />
           </a>
         </>
       )}
-      <div css={{ padding: "6px" }}>
-        <a href="https://sparcs.org/" target="_blank" rel="noreferrer">
+      <View style={css`{ padding: "6px" }`}>
+        {/* TODO: replace the href to pagination
+          <a href="https://sparcs.org/" target="_blank" rel="noreferrer">
           <SparcsLogo style={{ height: "27px", opacity: 0.632 }} />
-        </a>
-      </div>
-    </div>
+        </a> */}
+      </View>
+    </View>
   );
 };
 
