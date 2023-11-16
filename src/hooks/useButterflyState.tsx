@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { Dimensions } from "react-native";
 
 import theme from "tools/theme";
 
 type ButterflyState = "wide" | "narrow" | "fold";
 
 const getButterflyState = (): ButterflyState => {
-  const width = document.body.clientWidth;
+  const width = Dimensions.get("window").width;
   if (width >= theme.adaptivediv.butterfly_device_max_width.wide) return "wide";
   if (width >= theme.adaptivediv.butterfly_device_max_width.narrow)
     return "narrow";
@@ -25,8 +26,7 @@ const useButterflyState = (): ButterflyState => {
       }
     };
     resizeEvent();
-    window.addEventListener("resize", resizeEvent);
-    return () => window.removeEventListener("resize", resizeEvent);
+    Dimensions.addEventListener("change", resizeEvent);
   }, []);
 
   return state;

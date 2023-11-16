@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import theme from "tools/theme";
 
-import {css} from "@emotion/native";
+import { css } from "@emotion/native";
 import { Pressable } from "react-native";
 
 export type AdaptiveModalProps = {
