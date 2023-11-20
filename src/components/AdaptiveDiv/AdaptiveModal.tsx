@@ -6,20 +6,22 @@ import { css } from "@emotion/native";
 import { Pressable } from "react-native";
 
 export type AdaptiveModalProps = {
-  width?: PixelValue; // CSS["width"];
+  width?: number;
   children: ReactNode;
 };
 
 const AdaptiveModal = ({
-  width = theme.modal_width,
+  width = parseInt(theme.modal_width),
   children,
 }: AdaptiveModalProps) => {
   return (
     <Pressable
-      style={css`
-        width: min(${width}, calc(100% - ${theme.adaptivediv.margin * 2}px));
-        margin: auto;
-      `}
+      style={{
+        width:
+          width < width - 2 * theme.adaptivediv.margin
+            ? width
+            : width - 2 * theme.adaptivediv.margin,
+      }}
       onPress={(e) => e.stopPropagation()}
       onPressOut={(e) => e.stopPropagation()}
     >

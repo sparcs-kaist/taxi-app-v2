@@ -22,8 +22,8 @@ type ButtonProps = {
   children?: ReactNode;
   style?: StyleProp<ViewStyle>;
   textStyle?: ReactNativeStyle;
-  onPressed?: () => void; //CHANGES: onClick -> onPressed
-}; //TODO: find the alternative for the HTML Properties supports for div element
+  onClick?: () => void;
+};
 
 const Button = ({
   type,
@@ -31,7 +31,7 @@ const Button = ({
   children,
   style,
   textStyle,
-  onPressed,
+  onClick,
   ...divProps
 }: ButtonProps) => {
   const [hoverProps, isHover, isClicked] = useHoverProps();
@@ -88,7 +88,7 @@ const Button = ({
   return (
     <Pressable
       style={[style, styles]}
-      onPress={disabled ? undefined : onPressed}
+      onPress={disabled ? undefined : onClick}
       {...hoverProps}
       {...divProps}
     >

@@ -13,7 +13,7 @@ export type AdaptiveButterflyProps = {
   right?: ReactNode;
 };
 
-const butterflyGap = "15px";
+const butterflyGap = 15;
 
 const AdaptiveButterfly = ({ left, right }: AdaptiveButterflyProps) => {
   const butterflyState = useButterflyState();
@@ -32,13 +32,14 @@ const AdaptiveButterfly = ({ left, right }: AdaptiveButterflyProps) => {
 
   return (
     <View
-      style={css`
-        display: flex;
-        gap: ${butterflyGap};
-        justifycontent: center;
-      `}
+      style={{
+        alignContent: "flex-start",
+        justifyContent: "center",
+        flexDirection: "row",
+        flexWrap: "wrap",
+      }}
     >
-      <View style={styleColumn}>{left}</View>
+      <View style={[styleColumn, { marginRight: butterflyGap }]}>{left}</View>
       <View style={styleColumn}>{right}</View>
     </View>
   );
