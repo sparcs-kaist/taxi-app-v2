@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-native";
 
 import AdaptiveDiv from "components/AdaptiveDiv";
 import Button from "components/Button";

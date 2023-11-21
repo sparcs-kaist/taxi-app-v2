@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-// TODO: remove useHistory from react-router-dom
-// import { useHistory } from "react-router-dom";
+// TODO: remove useHistory from react-router-native
+// import { useHistory } from "react-router-native";
 
 import AdaptiveDiv from "components/AdaptiveDiv";
 

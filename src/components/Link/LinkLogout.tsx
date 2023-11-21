@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-native";
 
 import { deviceType } from "tools/loadenv";
 import { sendAuthLogoutEventToFlutter } from "tools/sendEventToFlutter";

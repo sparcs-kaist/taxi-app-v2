@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router-native";
 import { toast as _toast } from "react-toastify";
 import type { ToastContentProps } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

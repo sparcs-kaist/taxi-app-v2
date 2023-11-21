@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-native";
 
 import { getScrollPage, isBothStartsWith, scrollTo } from "./utils";
 

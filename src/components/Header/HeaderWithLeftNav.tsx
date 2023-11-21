@@ -1,6 +1,6 @@
 import { ReactNode, memo } from "react";
-// TODO: remove Link from react-router-dom
-// import { Link } from "react-router-dom";
+// TODO: remove Link from react-router-native
+// import { Link } from "react-router-native";
 
 import {View} from "react-native";
 

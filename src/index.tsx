@@ -1,7 +1,6 @@
 import {Suspense} from 'react';
-import {CookiesProvider} from 'react-cookie';
 import {createRoot} from 'react-dom/client';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {NativeRouter as Router} from 'react-router-native';
 import {ToastContainer} from 'react-toastify';
 
 import Loading from 'components/Loading';
@@ -17,7 +16,6 @@ import './index.css';
 import {RecoilRoot} from 'recoil';
 
 const App = () => (
-  <CookiesProvider>
     <RecoilRoot>
       <Router>
         <SocketToastProvider />
@@ -31,7 +29,6 @@ const App = () => (
         <ToastContainer />
       </Router>
     </RecoilRoot>
-  </CookiesProvider>
 );
 
 // create a root to display React components inside a browser DOM node

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-native";
 
 import { useIsLogin, useValueRecoilState } from "hooks/useFetchRecoilState";
 

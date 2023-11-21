@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-native";
 
 import {View, Text} from "react-native";
 

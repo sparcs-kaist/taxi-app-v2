@@ -1,4 +1,4 @@
-import { Redirect } from "react-router-dom";
+import { Redirect } from "react-router-native";
 
 const RedirectToHome = () => <Redirect to="/home" />;
 

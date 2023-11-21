@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-native";
 
 import Event2022Beta from "./Event2022Beta";
 import Event2023Fall from "./Event2023Fall";

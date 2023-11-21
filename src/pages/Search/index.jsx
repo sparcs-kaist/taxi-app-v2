@@ -1,7 +1,7 @@
 import qs from "qs";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useCookies } from "react-cookie";
-import { useHistory, useLocation } from "react-router-dom";
+
+import { useLocation } from "react-router-native";
 
 import useButterflyState from "hooks/useButterflyState";
 import { useAxios } from "hooks/useTaxiAPI";

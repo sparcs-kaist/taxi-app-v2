@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { useCallback } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-native";
 
 import axios from "./axios";
 

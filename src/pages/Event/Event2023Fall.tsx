@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-native";
 
 import AdaptiveDiv from "components/AdaptiveDiv";
 import Button from "components/Button";

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-native";
 
 import useDateToken from "hooks/useDateToken";
 import { useAxios, useQuery } from "hooks/useTaxiAPI";

@@ -1,6 +1,6 @@
 import qs from "qs";
 import { ReactElement } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-native";
 
 import theme from "tools/theme";
 

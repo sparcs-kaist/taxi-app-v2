@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-native";
 
 import Footer from "components/Footer";
 import { ModalPrivacyPolicy } from "components/ModalPopup";

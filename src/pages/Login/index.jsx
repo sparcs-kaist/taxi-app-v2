@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-native";
 
 import Button from "components/Button";
 import LinkLogin from "components/Link/LinkLogin";

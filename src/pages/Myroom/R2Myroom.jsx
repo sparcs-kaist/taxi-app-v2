@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-native";
 
 import AdaptiveDiv from "components/AdaptiveDiv";
 import Chat from "components/Chat";

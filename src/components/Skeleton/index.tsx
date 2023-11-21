@@ -1,5 +1,5 @@
 import { ReactNode, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-native";
 
 import { useEventEffect } from "hooks/event/useEventEffect";
 import useCSSVariablesEffect from "hooks/skeleton/useCSSVariablesEffect";

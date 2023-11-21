@@ -1,6 +1,6 @@
 import { ReactNode, memo, useCallback, useState } from "react";
-// TODO: remove Link from react-router-dom
-// import { Link } from "react-router-dom";
+// TODO: remove Link from react-router-native
+import { Link } from "react-router-native";
 
 import { css } from "@emotion/native";
 import {View} from "react-native";
@@ -51,10 +51,9 @@ const Footer = ({ type = "full", children }: FooterProps) => {
             text="개인정보 처리방침"
             onPress={onClickPrivacyPolicy}
           />
-          {/* TODO: remove Link from react-router-dom
           <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
             <ButtonAboveFooter text="택시 살펴보기" />
-          </Link> */}
+          </Link>
           <ButtonAboveFooter text="만든 사람들" onPress={onClickCredit} />
         </>
       )}
@@ -69,9 +68,9 @@ const Footer = ({ type = "full", children }: FooterProps) => {
             text="한가위 송편 이벤트를 만든 사람들"
             onPress={onClickCredit}
           />
-          {/* <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
+          <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
             <ButtonAboveFooter text="택시 살펴보기" />
-          </Link> */}
+          </Link>
           <a className="popup-channeltalk">
             <ButtonAboveFooter text="채널톡 문의하기" />
           </a>

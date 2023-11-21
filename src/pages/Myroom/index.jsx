@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-native";
 
 import useButterflyState from "hooks/useButterflyState";
 import { useIsLogin, useValueRecoilState } from "hooks/useFetchRecoilState";

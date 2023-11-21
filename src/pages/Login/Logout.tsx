@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-native";
 
 import { useQuery } from "hooks/useTaxiAPI";
 

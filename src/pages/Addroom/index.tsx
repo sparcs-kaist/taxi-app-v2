@@ -1,7 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { useCookies } from "react-cookie";
-import { useHistory } from "react-router-dom";
-
 import { useEvent2023FallQuestComplete } from "hooks/event/useEvent2023FallQuestComplete";
 import {
   useFetchRecoilState,

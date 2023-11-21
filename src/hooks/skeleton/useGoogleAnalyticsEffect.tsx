@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import reactGA from "react-ga4";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-native";
 
 import loginInfoAtom from "atoms/loginInfo";
 import { useRecoilValue } from "recoil";
