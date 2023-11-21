@@ -22,7 +22,7 @@ import Tooltip from "components/Tooltip";
 import SelectSearchOptions from "./SelectSearchOptions";
 import SideResult from "./SideResult";
 import { isValidQuery } from "./utils";
-
+import useCookies from "hooks/useCookies";
 import errorAtom from "atoms/error";
 import { useSetRecoilState } from "recoil";
 

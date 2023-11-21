@@ -24,7 +24,7 @@ import FullParticipation from "./FullParticipation";
 
 import alertAtom from "atoms/alert";
 import { useSetRecoilState } from "recoil";
-
+import useCookies from "hooks/useCookies";
 import { date2str, getToday, getToday10 } from "tools/moment";
 import { randomRoomNameGenerator } from "tools/random";
 import regExpTest from "tools/regExpTest";
@@ -33,15 +33,15 @@ import theme from "tools/theme";
 const AddRoom = () => {
   const axios = useAxios();
   const history = useHistory();
-  const [cookies, setCookies] = useCookies(["defaultFromTo"]);
+  const [cookies, setCookies] = useCookies();
 
   const onCall = useRef(false);
   const today = getToday();
   const today10 = getToday10();
   const [valueName, setName] = useState("");
   const [valuePlace, setPlace] = useState(
-    cookies?.defaultFromTo?.[0] && cookies?.defaultFromTo?.[1]
-      ? cookies.defaultFromTo
+    cookies['defaultFromTo']?.[0] && cookies['defaultFromTo']?.[1]
+      ? cookies['defaultFromTo']
       : [null, null]
   );
   const [valueDate, setDate] = useState<Array<Nullable<number>>>([
