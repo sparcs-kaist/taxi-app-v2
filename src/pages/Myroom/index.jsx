@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useHistory, useParams } from "react-router-native";
+import { useNavigate, useParams } from "react-router-native";
 
 import useButterflyState from "hooks/useButterflyState";
 import { useIsLogin, useValueRecoilState } from "hooks/useFetchRecoilState";
@@ -16,7 +16,7 @@ import R2Myroom from "./R2Myroom";
 export const MAX_PARTICIPATION = 5;
 
 const Myroom = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { roomId } = useParams();
   const butterflyState = useButterflyState();
   const myRooms = useValueRecoilState("myRooms");
@@ -26,7 +26,7 @@ const Myroom = () => {
 
   useEffect(() => {
     if (butterflyState === "fold" && roomId) {
-      history.replace(`/chatting/${roomId}`);
+      navigate(`/chatting/${roomId}`);
     }
   }, [butterflyState, roomId]);
 

@@ -1,6 +1,6 @@
 import qs from "qs";
 import { ReactElement } from "react";
-import { useLocation } from "react-router-native";
+import { useLocation, useNavigate } from "react-router-native";
 
 import theme from "tools/theme";
 
@@ -60,7 +60,7 @@ const Pagination = ({
   isMobile,
 }: PaginationProps): ReactElement => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const style = {
     display: "flex",
@@ -86,21 +86,21 @@ const Pagination = ({
     color: theme.purple,
     cursor: "pointer",
   };
-
+  
   const pageClickHandler = (page: number) => {
-    history.push(`${location.pathname}?${getNewQuery(location.search, page)}`);
+    navigate(`${location.pathname}?${getNewQuery(location.search, page)}`);
   };
 
   const prevPageHandler = () => {
     if (currentPage <= 1) return;
-    history.push(
+    navigate(
       `${location.pathname}?${getNewQuery(location.search, currentPage - 1)}`
     );
   };
 
   const nextPageHandler = () => {
     if (currentPage >= totalPages) return;
-    history.push(
+    navigate(
       `${location.pathname}?${getNewQuery(location.search, currentPage + 1)}`
     );
   };

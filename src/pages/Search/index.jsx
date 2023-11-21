@@ -1,7 +1,7 @@
 import qs from "qs";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { useLocation } from "react-router-native";
+import { useLocation, useNavigate } from "react-router-native";
 
 import useButterflyState from "hooks/useButterflyState";
 import { useAxios } from "hooks/useTaxiAPI";
@@ -36,7 +36,7 @@ const Search = () => {
     "defaultSearchOptions",
     "defaultFromTo",
   ]);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { search } = useLocation();
   const butterflyState = useButterflyState();
   const today10 = getToday10();
@@ -227,7 +227,7 @@ const Search = () => {
 
   // 검색 버튼 클릭 시
   const onClickSearch = () =>
-    history.push(
+    navigate(
       `/search?${qs.stringify({
         place: searchOptions.place ? valuePlace : undefined,
         date: searchOptions.date ? valueDate : undefined,

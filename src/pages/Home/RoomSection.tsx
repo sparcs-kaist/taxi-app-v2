@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { useHistory } from "react-router-native";
+import { useNavigate } from "react-router-native";
 
 import useDateToken from "hooks/useDateToken";
 import { useAxios, useQuery } from "hooks/useTaxiAPI";
@@ -22,7 +22,7 @@ type RoomSectionProps = {
 
 const RoomSection = ({ roomId }: RoomSectionProps) => {
   const axios = useAxios();
-  const history = useHistory();
+  const navigate = useNavigate();
   const setAlert = useSetRecoilState(alertAtom);
   const today = getToday().subtract(1, "day");
   const [allRoomsToken, fetchAllRooms] = useDateToken();
@@ -65,7 +65,7 @@ const RoomSection = ({ roomId }: RoomSectionProps) => {
       onSuccess: setRoomInfo,
       onError: () => {
         setAlert("해당 방 조회에 실패하였습니다.");
-        history.replace("/home");
+        navigate("/home");
       },
     });
   }, [roomId, allRooms]);
@@ -75,7 +75,7 @@ const RoomSection = ({ roomId }: RoomSectionProps) => {
       <ModalRoomSelection
         isOpen={!!roomInfo}
         onChangeIsOpen={() =>
-          history.replace("/home" + history.location.search)
+          navigate("/home" + navigate.location.search)
         }
         roomInfo={roomInfo}
       />
@@ -85,7 +85,7 @@ const RoomSection = ({ roomId }: RoomSectionProps) => {
       <SelectDate
         selectedDate={selectedDate}
         onClick={([year, month, date]) => {
-          history.replace("/home");
+          navigate("/home");
           setSelectedDate([year, month, date]);
         }}
       />

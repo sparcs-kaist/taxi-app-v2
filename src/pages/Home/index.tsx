@@ -1,4 +1,4 @@
-import { useHistory, useParams } from "react-router-native";
+import { useNavigate, useParams } from "react-router-native";
 
 import Footer from "components/Footer";
 import { ModalPrivacyPolicy } from "components/ModalPopup";
@@ -8,11 +8,11 @@ import InfoSection from "./InfoSection";
 import RoomSection from "./RoomSection";
 
 const Home = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { roomId: _roomId } = useParams<{ roomId: string }>();
   const roomId = _roomId === "privacyPolicy" ? null : _roomId;
 
-  const onChangeIsOpenPrivacyPolicy = () => history.replace("/home");
+  const onChangeIsOpenPrivacyPolicy = () => navigate("/home");
 
   return (
     <>

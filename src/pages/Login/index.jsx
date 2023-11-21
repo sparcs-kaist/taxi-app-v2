@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-native";
+import { useNavigate, useLocation } from "react-router-native";
 
 import Button from "components/Button";
 import LinkLogin from "components/Link/LinkLogin";
@@ -12,7 +12,7 @@ import theme from "tools/theme";
 import { ReactComponent as TaxiLogo } from "static/assets/sparcsLogos/TaxiLogo.svg";
 
 const Login = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { search } = useLocation();
   const { id: userId } = useRecoilValue(loginInfoAtom);
 
@@ -21,12 +21,12 @@ const Login = () => {
     const redirectPath = searchParams.get("redirect");
 
     // 이미 로그인 되어 있는 경우, 홈페이지로 이동합니다.
-    if (userId) history.replace(redirectPath || "/");
+    if (userId) navigate(redirectPath || "/");
   }, [userId, search]);
 
   const onClickBack = useCallback(() => {
-    history.goBack();
-  }, [history]);
+    navigate(-1);
+  }, [navigate]);
 
   const style = {
     display: "flex",

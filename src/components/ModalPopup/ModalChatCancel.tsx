@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { useHistory } from "react-router-native";
+import { useNavigate } from "react-router-native";
 
 import {View, Text} from "react-native";
 
@@ -23,7 +23,7 @@ type ModalChatCancelProps = Omit<
 
 const ModalChatCancel = ({ roomId, ...modalProps }: ModalChatCancelProps) => {
   const axios = useAxios();
-  const history = useHistory();
+  const navigate = useNavigate();
   const setAlert = useSetRecoilState(alertAtom);
   const fetchMyrooms = useFetchRecoilState("myRooms");
 
@@ -35,7 +35,7 @@ const ModalChatCancel = ({ roomId, ...modalProps }: ModalChatCancelProps) => {
         data: { roomId },
         onSuccess: () => {
           fetchMyrooms();
-          history.replace("/myroom");
+          navigate("/myroom");
         },
         onError: () => setAlert("탑승 취소를 실패하였습니다."),
       }),

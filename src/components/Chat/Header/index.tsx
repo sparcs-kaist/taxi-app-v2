@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-native";
+import { Link, useNavigate } from "react-router-native";
 
 import type { LayoutType } from "types/chat";
 
@@ -20,7 +20,7 @@ type HeaderProps = {
 };
 
 const Header = ({ layoutType, roomInfo }: HeaderProps) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const butterflyState = useButterflyState();
   const [isOpenSideMenu, setIsOpenSideMenu] = useState(false);
 
@@ -79,9 +79,9 @@ const Header = ({ layoutType, roomInfo }: HeaderProps) => {
         <ArrowBackRoundedIcon
           style={styleIconLarge}
           onClick={
-            history.length <= 1
-              ? () => history.replace("/myroom")
-              : () => history.goBack()
+            navigate.length <= 1
+              ? () => navigate("/myroom")
+              : () => navigate(-1)
           }
         />
         <div css={styleInfo}>

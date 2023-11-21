@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { Link, useHistory } from "react-router-native";
+import { Link, useNavigate } from "react-router-native";
 
 import AdaptiveDiv from "components/AdaptiveDiv";
 import Chat from "components/Chat";
@@ -13,10 +13,10 @@ import WhiteContainer from "components/WhiteContainer";
 import theme from "tools/theme";
 
 const LinkRoom = (props) => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   return props.currentId === props.id ? (
-    <div onClick={() => history.goBack()}>{props.children}</div>
+    <div onClick={() => navigate(-1)}>{props.children}</div>
   ) : (
     <Link
       to={(location) => ({

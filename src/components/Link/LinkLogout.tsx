@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useHistory, useLocation } from "react-router-native";
+import { useNavigate, useLocation } from "react-router-native";
 
 import { deviceType } from "tools/loadenv";
 import { sendAuthLogoutEventToFlutter } from "tools/sendEventToFlutter";
@@ -10,7 +10,7 @@ type LinkLogoutProps = {
 };
 
 export const useOnClickLogout = (redirect?: string) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { pathname, search } = useLocation();
   const redirectPath = redirect || pathname + search;
   const isClicked = useRef(false);
@@ -19,9 +19,9 @@ export const useOnClickLogout = (redirect?: string) => {
     if (isClicked.current) return;
     isClicked.current = true;
     if (deviceType.startsWith("app/")) await sendAuthLogoutEventToFlutter();
-    history.replace(`/logout?redirect=${encodeURIComponent(redirectPath)}`);
+    navigate(`/logout?redirect=${encodeURIComponent(redirectPath)}`);
     isClicked.current = false;
-  }, [history, redirectPath]);
+  }, [navigate, redirectPath]);
 };
 
 const LinkLogout = ({ children, redirect }: LinkLogoutProps) => {

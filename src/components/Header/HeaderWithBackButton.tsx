@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 // TODO: remove useHistory from react-router-native
-// import { useHistory } from "react-router-native";
+import { useNavigate } from "react-router-native";
 
 import AdaptiveDiv from "components/AdaptiveDiv";
 
@@ -25,7 +25,7 @@ const HeaderWithBackButton = ({
   children,
   ...adaptiveDivProps
 }: HeaderWithBackButtonProps) => {
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   const styleBody = css`{
     height: "100%",

@@ -1,6 +1,6 @@
 import { useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-native";
+import { useNavigate } from "react-router-native";
 
 import {
   useFetchRecoilState,
@@ -103,7 +103,7 @@ const InfoSection = ({ title, alignDirection, children }: InfoSectionProps) => (
 const BodyRoomSelection = ({ roomInfo }: BodyRoomSelectionProps) => {
   const { i18n } = useTranslation();
   const axios = useAxios();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const onCall = useRef(false);
   const loginInfo = useValueRecoilState("loginInfo");
@@ -133,12 +133,12 @@ const BodyRoomSelection = ({ roomInfo }: BodyRoomSelectionProps) => {
       data: { roomId: roomInfo._id },
       onSuccess: () => {
         fetchMyRooms();
-        history.push(`/myroom/${roomInfo._id}`);
+        navigate(`/myroom/${roomInfo._id}`);
       },
       onError: () => setAlert("방 참여에 실패하였습니다."),
     });
     onCall.current = false;
-  }, [roomInfo?._id, history]);
+  }, [roomInfo?._id, navigate]);
 
   const stylePlace = {
     width: "100%",
