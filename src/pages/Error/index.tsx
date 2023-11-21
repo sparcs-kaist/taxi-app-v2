@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-native";
+import { useNavigate } from "react-router-native";
 
 import Button from "components/Button";
 
@@ -11,7 +11,7 @@ import { ReactComponent as TaxiLogo } from "static/assets/sparcsLogos/TaxiLogo.s
 
 const Error = () => {
   const [error, setError] = useRecoilState(errorAtom);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const stylePage: CSS = {
     display: "flex",
@@ -31,11 +31,11 @@ const Error = () => {
 
   const onClickBack = () => {
     setError(null);
-    history.goBack();
+    navigate(-1);
   };
   const onClickHome = () => {
     setError(null);
-    history.replace("/");
+    navigate("/");
   };
 
   return (

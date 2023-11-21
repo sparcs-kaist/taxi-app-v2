@@ -1,6 +1,6 @@
 import { AxiosError } from "axios";
 import { useCallback } from "react";
-import { useHistory, useLocation } from "react-router-native";
+import { useNavigate, useLocation } from "react-router-native";
 
 import axios from "./axios";
 
@@ -19,7 +19,7 @@ export type AxiosOption = {
 };
 
 const useAxios = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const setError = useSetRecoilState(errorAtom);
   const { pathname, search } = useLocation();
   const currentPath = pathname + search;
@@ -37,7 +37,7 @@ const useAxios = () => {
           syncDayWithServer(timeServer.diff(timeClient));
         }
         if (res?.status === 403 && res.data?.error === "not logged in") {
-          history.replace(
+          navigate(
             `/logout?redirect=${encodeURIComponent(
               `/login?redirect=${encodeURIComponent(currentPath)}`
             )}`
@@ -54,7 +54,7 @@ const useAxios = () => {
           e?.response?.status === 403 &&
           e?.response?.data?.error === "not logged in"
         ) {
-          history.replace(
+          navigate(
             `/logout?redirect=${encodeURIComponent(
               `/login?redirect=${encodeURIComponent(currentPath)}`
             )}`
@@ -71,7 +71,7 @@ const useAxios = () => {
         }
       }
     },
-    [history, currentPath]
+    [navigate, currentPath]
   );
 };
 
