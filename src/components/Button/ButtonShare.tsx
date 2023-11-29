@@ -7,16 +7,16 @@ type ButtonShareProps = {
   text: string;
   icon: React.ReactNode;
   background: string;
-  onPress?: () => void; //CHANGES: onClick -> onPress
+  onClick?: () => void;
 };
 
-const ButtonShare = ({ text, icon, background, onPress }: ButtonShareProps) => (
+const ButtonShare = ({ text, icon, background, onClick }: ButtonShareProps) => (
   <Pressable
     style={css`
       width: 45px;
       cursor: pointer;
     `}
-    onPress={onPress}
+    onPress={onClick}
   >
     <View
       style={css`
@@ -40,7 +40,7 @@ const ButtonShare = ({ text, icon, background, onPress }: ButtonShareProps) => (
           textalign: center;
           paddingtop: 4px;
         `,
-        theme.font10 as TextStyle
+        theme.font10 as TextStyle,
       ]}
     >
       {text}

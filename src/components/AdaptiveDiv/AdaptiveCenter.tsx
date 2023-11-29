@@ -6,12 +6,9 @@ import theme from "tools/theme";
 
 export type AdaptiveCenterProps = {
   children?: ReactNode;
-}; //TODO: find the alternative for the HTML Properties supports for div element
+};
 
-const AdaptiveCenter = ({
-  children,
-  ...divProps //TODO: divProps가 사용 가능한지 여부
-}: AdaptiveCenterProps) => (
+const AdaptiveCenter = ({ children, ...divProps }: AdaptiveCenterProps) => (
   <View
     style={css`
       position: relative;

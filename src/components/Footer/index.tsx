@@ -1,15 +1,15 @@
 import { ReactNode, memo, useCallback, useState } from "react";
-// TODO: remove Link from react-router-native
-import { Link } from "react-router-native";
-
+import { View, Text, Linking, Pressable } from "react-native";
 import { css } from "@emotion/native";
-import {View} from "react-native";
+
+// import { Link } from "react-router-dom";
+import { Link } from "react-router-native";
 
 import { ModalCredit, ModalPrivacyPolicy } from "components/ModalPopup";
 
 import ButtonAboveFooter from "./ButtonAboveFooter";
 
-import { ReactComponent as SparcsLogo } from "static/assets/sparcsLogos/SparcsLogoWithText.svg";
+import SparcsLogo from "static/assets/sparcsLogos/SparcsLogoWithText.svg";
 
 type FooterProps = {
   type?: "only-logo" | "full" | "event-2023fall";
@@ -30,12 +30,7 @@ const Footer = ({ type = "full", children }: FooterProps) => {
   );
 
   return (
-    <View
-      style={css`
-        paddingTop: 45px;
-        textAlign: center;
-      `}
-    >
+    <View style={{ paddingTop: 10, alignContent: "center" }}>
       {children}
       {type === "full" && (
         <>
@@ -44,17 +39,23 @@ const Footer = ({ type = "full", children }: FooterProps) => {
             onChangeIsOpen={setIsOpenPrivacyPolicy}
           />
           <ModalCredit isOpen={isOpenCredit} onChangeIsOpen={setIsOpenCredit} />
-          <a className="popup-channeltalk">
+          <View>
             <ButtonAboveFooter text="채널톡 문의하기" />
-          </a>
+          </View>
           <ButtonAboveFooter
             text="개인정보 처리방침"
-            onPress={onClickPrivacyPolicy}
+            onClick={onClickPrivacyPolicy}
           />
-          <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
+          <ButtonAboveFooter text="택시 살펴보기" />
+          <Link
+            to="/event/2023spring-guide"
+            style={css`
+              textdecoration: "none";
+            `}
+          >
             <ButtonAboveFooter text="택시 살펴보기" />
           </Link>
-          <ButtonAboveFooter text="만든 사람들" onPress={onClickCredit} />
+          <ButtonAboveFooter text="만든 사람들" onClick={onClickCredit} />
         </>
       )}
       {type === "event-2023fall" && (
@@ -66,21 +67,34 @@ const Footer = ({ type = "full", children }: FooterProps) => {
           />
           <ButtonAboveFooter
             text="한가위 송편 이벤트를 만든 사람들"
-            onPress={onClickCredit}
+            onClick={onClickCredit}
           />
-          <Link to="/event/2023spring-guide" css={{ textDecoration: "none" }}>
+          <Link
+            to="/event/2023spring-guide"
+            style={css`
+              textdecoration: "none";
+            `}
+          >
             <ButtonAboveFooter text="택시 살펴보기" />
           </Link>
-          <a className="popup-channeltalk">
+          <View>
             <ButtonAboveFooter text="채널톡 문의하기" />
-          </a>
+          </View>
         </>
       )}
-      <View style={css`{ padding: "6px" }`}>
-        {/* TODO: replace the href to pagination
-          <a href="https://sparcs.org/" target="_blank" rel="noreferrer">
-          <SparcsLogo style={{ height: "27px", opacity: 0.632 }} />
-        </a> */}
+      <View
+        style={css`
+          padding: "6px";
+        `}
+      >
+        <Pressable
+          onPress={() => Linking.openURL("https://sparcs.org/")}
+          // (target = "_blank"),
+          // (rel = "noreferrer")
+        >
+          <Text>asd</Text>
+          {/* <SparcsLogo height={27} opacity={0.632} /> */}
+        </Pressable>
       </View>
     </View>
   );
