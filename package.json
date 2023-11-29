@@ -10,8 +10,14 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
+    "@emotion/native": "^11.11.0",
+    "@react-native-async-storage/async-storage": "^1.19.6",
     "react": "18.1.0",
-    "react-native": "0.70.10"
+    "react-i18next": "^13.3.1",
+    "react-native": "0.72.6",
+    "react-native-channel-plugin": "^0.8.0",
+    "react-router-native": "^6.19.0",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

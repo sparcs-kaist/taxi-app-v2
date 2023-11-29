@@ -2,6 +2,9 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",     /* Recommended React Native TSConfig base */
   "compilerOptions": {
+    "baseUrl": "./src",
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Completeness */

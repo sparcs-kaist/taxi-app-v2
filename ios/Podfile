@@ -25,6 +25,9 @@ target 'taxi_app' do
     # An absolute path to your application root.
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
+  
+  pod 'ChannelIOSDK', podspec: 'https://mobile-static.channel.io/ios/latest/xcframework.podspec'
+  pod 'RNChannelIO', :path => '../node_modules/react-native-channel-plugin'
 
   target 'taxi_appTests' do
     inherit! :complete
