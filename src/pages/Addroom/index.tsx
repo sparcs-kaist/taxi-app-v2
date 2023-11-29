@@ -29,10 +29,12 @@ import { date2str, getToday, getToday10 } from "tools/moment";
 import { randomRoomNameGenerator } from "tools/random";
 import regExpTest from "tools/regExpTest";
 import theme from "tools/theme";
+import { useNavigate } from "react-router-native";
+
 
 const AddRoom = () => {
   const axios = useAxios();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [cookies, setCookies] = useCookies();
 
   const onCall = useRef(false);
@@ -66,9 +68,7 @@ const AddRoom = () => {
     const expirationDate = new Date();
     expirationDate.setFullYear(expirationDate.getFullYear() + 10);
     if (valuePlace[0] && valuePlace[1]) {
-      setCookies("defaultFromTo", valuePlace, {
-        expires: expirationDate,
-      });
+      setCookies("defaultFromTo", valuePlace);
     }
   }, [valuePlace]);
 
@@ -116,7 +116,7 @@ const AddRoom = () => {
           //#region event2023Fall
           event2023FallQuestComplete("firstRoomCreation");
           //#endregion
-          history.push("/myroom");
+          navigate("/myroom");
         },
         onError: () => setAlert("방 개설에 실패하였습니다."),
       });
